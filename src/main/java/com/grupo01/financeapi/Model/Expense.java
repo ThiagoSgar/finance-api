@@ -1,5 +1,7 @@
 package com.grupo01.financeapi.Model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_expenses")
+@Getter
+@Setter
 public class Expense {
 
     @Id
