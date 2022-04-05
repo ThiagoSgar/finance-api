@@ -1,5 +1,6 @@
 package com.grupo01.financeapi.Controller;
 
+import com.grupo01.financeapi.Model.Dto.IncomeDTO;
 import com.grupo01.financeapi.Model.Income;
 import com.grupo01.financeapi.Service.IncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,12 @@ public class IncomeController {
     IncomeService service;
 
     @GetMapping
-    public List<Income> listAll() {
+    public List<IncomeDTO> listAll() {
         return service.listAll();
     }
 
     @PostMapping("/new")
-    public ResponseEntity<Income> create(@RequestBody Income income) {
+    public ResponseEntity<IncomeDTO> create(@RequestBody Income income) {
         return service.create(income);
     }
 }
