@@ -1,8 +1,8 @@
-package com.grupo01.financeapi.Service;
+package com.grupo01.financeapi.domain.service;
 
-import com.grupo01.financeapi.Model.Dto.IncomeDTO;
-import com.grupo01.financeapi.Model.Income;
-import com.grupo01.financeapi.Repository.IncomeRepository;
+import com.grupo01.financeapi.api.dto.IncomeDTO;
+import com.grupo01.financeapi.domain.model.Income;
+import com.grupo01.financeapi.domain.repository.IncomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

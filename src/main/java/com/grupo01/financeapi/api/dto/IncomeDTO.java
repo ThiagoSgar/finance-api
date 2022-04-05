@@ -1,6 +1,6 @@
-package com.grupo01.financeapi.Model.Dto;
+package com.grupo01.financeapi.api.dto;
 
-import com.grupo01.financeapi.Model.Income;
+import com.grupo01.financeapi.domain.model.Income;
 import lombok.Getter;
 import lombok.Setter;
 

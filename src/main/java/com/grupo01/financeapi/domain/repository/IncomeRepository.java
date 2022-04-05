@@ -1,6 +1,6 @@
-package com.grupo01.financeapi.Repository;
+package com.grupo01.financeapi.domain.repository;
 
-import com.grupo01.financeapi.Model.Income;
+import com.grupo01.financeapi.domain.model.Income;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -1,11 +1,10 @@
-package com.grupo01.financeapi.Model;
+package com.grupo01.financeapi.domain.model;
 
-import com.grupo01.financeapi.Model.Dto.IncomeDTO;
+import com.grupo01.financeapi.api.dto.IncomeDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

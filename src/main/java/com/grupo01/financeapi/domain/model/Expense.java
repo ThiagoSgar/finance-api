@@ -1,4 +1,4 @@
-package com.grupo01.financeapi.Model;
+package com.grupo01.financeapi.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
