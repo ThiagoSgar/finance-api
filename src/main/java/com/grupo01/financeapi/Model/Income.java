@@ -30,6 +30,5 @@ public class Income {
     private BigDecimal value;
 
     @NotNull
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate date;
 }
