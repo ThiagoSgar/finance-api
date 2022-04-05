@@ -1,5 +1,6 @@
 package com.grupo01.financeapi.Model;
 
+import com.grupo01.financeapi.Model.Dto.IncomeDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,4 +32,8 @@ public class Income {
 
     @NotNull
     private LocalDate date;
+
+    public IncomeDTO toDto() {
+        return new IncomeDTO(this);
+    }
 }
