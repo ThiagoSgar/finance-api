@@ -25,4 +25,9 @@ public class IncomeController {
     public ResponseEntity<IncomeDTO> create(@RequestBody Income income) {
         return service.create(income);
     }
+
+    @DeleteMapping("/delete/{incomeId}")
+    public ResponseEntity<?> delete(@RequestBody Long incomeId) {
+        return service.deleteById(incomeId);
+    }
 }

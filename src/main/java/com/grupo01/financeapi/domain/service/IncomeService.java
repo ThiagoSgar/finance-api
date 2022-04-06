@@ -28,4 +28,12 @@ public class IncomeService {
     public ResponseEntity<IncomeDTO> create(Income income) {
         return new ResponseEntity<>(repository.save(income).toDto(), HttpStatus.CREATED);
     }
+
+    public ResponseEntity<?> deleteById(Long incomeId) {
+        return repository.findById(incomeId)
+                .map(income -> {
+            repository.delete(income);
+            return ResponseEntity.ok().build();
+        }).orElse(ResponseEntity.notFound().build());
+    }
 }
