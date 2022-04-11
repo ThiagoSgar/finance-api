@@ -27,6 +27,7 @@ public class IncomeController {
         return service.create(income);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<IncomeDTO> listById(@PathVariable Long id){
         return service.listById(id);
@@ -34,6 +35,11 @@ public class IncomeController {
     @PutMapping("/{id}")
     public ResponseEntity<IncomeDTO> update(@PathVariable Long id, @RequestBody @Valid Income income){
         return service.update(id, income);
+    }
+
+    @DeleteMapping("/delete/{incomeId}")
+    public ResponseEntity<?> delete(@RequestBody Long incomeId) {
+        return service.deleteById(incomeId);
     }
 
 }
