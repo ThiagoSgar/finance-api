@@ -25,9 +25,23 @@ public class IncomeService {
         return incomeDTOList;
     }
 
+    public ResponseEntity<IncomeDTO> listById(Long id) {
+        return repository.findById(id)
+                .map(income -> ResponseEntity.ok().body(income.toDto())).orElse(ResponseEntity.notFound().build());
+    }
+
     public ResponseEntity<IncomeDTO> create(Income income) {
         return new ResponseEntity<>(repository.save(income).toDto(), HttpStatus.CREATED);
     }
+
+
+    public ResponseEntity<IncomeDTO> update(Long id, Income income){
+        return repository.findById(id)
+                .map(updated -> {
+                    updated.setId(income.getId());
+                    updated = repository.save(income);
+                    return ResponseEntity.ok(updated.toDto());
+                }).orElse(ResponseEntity.notFound().build());
 
     public ResponseEntity<?> deleteById(Long incomeId) {
         return repository.findById(incomeId)
@@ -35,5 +49,10 @@ public class IncomeService {
             repository.delete(income);
             return ResponseEntity.ok().build();
         }).orElse(ResponseEntity.notFound().build());
+
     }
 }
+
+
+
+
