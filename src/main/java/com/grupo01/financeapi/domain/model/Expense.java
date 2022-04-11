@@ -1,5 +1,7 @@
 package com.grupo01.financeapi.domain.model;
 
+import com.grupo01.financeapi.api.dto.ExpenseDTO;
+import com.grupo01.financeapi.api.dto.IncomeDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,4 +34,8 @@ public class Expense {
     @NotNull
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate date;
+
+    public ExpenseDTO toDto() {
+        return new ExpenseDTO(this);
+    }
 }

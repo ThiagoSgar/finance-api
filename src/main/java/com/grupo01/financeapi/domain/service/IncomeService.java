@@ -43,8 +43,12 @@ public class IncomeService {
                     return ResponseEntity.ok(updated.toDto());
                 }).orElse(ResponseEntity.notFound().build());
     }
+
+    public ResponseEntity<?> deleteById(Long incomeId) {
+        return repository.findById(incomeId)
+                .map(income -> {
+            repository.delete(income);
+            return ResponseEntity.ok().build();
+        }).orElse(ResponseEntity.notFound().build());
+    }
 }
-
-
-
-
