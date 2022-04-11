@@ -48,6 +48,10 @@ public class IncomeService {
                 .map(income -> {
             repository.delete(income);
             return ResponseEntity.ok().build();
-        }).orElse(ResponseEntity.noContent().build());
+        }).orElse(ResponseEntity.notFound().build());
     }
 }
+
+
+
+
