@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IncomeRepository extends CrudRepository<Income, Long> {
     List<Income> findAll();
+    List<Income> findByDescription(String description);
 }

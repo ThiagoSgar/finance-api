@@ -32,6 +32,12 @@ public class ExpenseService {
                 ).orElse(ResponseEntity.notFound().build());
     }
 
+    public List<ExpenseDTO> listByDescription(String description) {
+        List<ExpenseDTO> expenseByDescriptionList = new ArrayList<>();
+        repository.findByDescription(description).forEach(expense -> expenseByDescriptionList.add(expense.toDto()));
+        return  expenseByDescriptionList;
+    }
+
     public ResponseEntity<ExpenseDTO> create(Expense expense) {
         return new ResponseEntity<>(repository.save(expense).toDto(), HttpStatus.CREATED);
     }
