@@ -21,7 +21,6 @@ public class IncomeService {
         List<IncomeDTO> incomeDTOList = new ArrayList<>();
         repository.findAll()
             .forEach(income -> incomeDTOList.add(income.toDto()));
-
         return incomeDTOList;
     }
 
@@ -49,6 +48,6 @@ public class IncomeService {
                 .map(income -> {
             repository.delete(income);
             return ResponseEntity.ok().build();
-        }).orElse(ResponseEntity.notFound().build());
+        }).orElse(ResponseEntity.noContent().build());
     }
 }
