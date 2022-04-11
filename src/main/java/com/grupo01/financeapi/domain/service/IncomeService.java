@@ -21,7 +21,6 @@ public class IncomeService {
         List<IncomeDTO> incomeDTOList = new ArrayList<>();
         repository.findAll()
             .forEach(income -> incomeDTOList.add(income.toDto()));
-
         return incomeDTOList;
     }
 
@@ -42,6 +41,7 @@ public class IncomeService {
                     updated = repository.save(income);
                     return ResponseEntity.ok(updated.toDto());
                 }).orElse(ResponseEntity.notFound().build());
+    }
 
     public ResponseEntity<?> deleteById(Long incomeId) {
         return repository.findById(incomeId)
@@ -49,7 +49,6 @@ public class IncomeService {
             repository.delete(income);
             return ResponseEntity.ok().build();
         }).orElse(ResponseEntity.notFound().build());
-
     }
 }
 

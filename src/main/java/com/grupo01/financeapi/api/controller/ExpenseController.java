@@ -5,10 +5,9 @@ import com.grupo01.financeapi.domain.model.Expense;
 import com.grupo01.financeapi.domain.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/expenses")
@@ -17,6 +16,15 @@ public class ExpenseController {
     @Autowired
     ExpenseService service;
 
+    @GetMapping
+    public List<ExpenseDTO> listAll(){
+        return service.listAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ExpenseDTO> listById(@PathVariable Long id){
+        return service.listById(id);
+    }
     @PostMapping("/new")
     public ResponseEntity<ExpenseDTO> create(@RequestBody Expense expense) {
         return service.create(expense);
