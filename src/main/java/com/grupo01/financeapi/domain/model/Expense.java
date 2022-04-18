@@ -35,6 +35,9 @@ public class Expense {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate date;
 
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
     public ExpenseDTO toDto() {
         return new ExpenseDTO(this);
     }
