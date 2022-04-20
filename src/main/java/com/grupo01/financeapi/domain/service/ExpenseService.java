@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExpenseService {
@@ -19,14 +20,14 @@ public class ExpenseService {
     ExpenseRepository repository;
 
 
-    public List<ExpenseDTO> listAll(){
+    public List<ExpenseDTO> listAll() {
         List<ExpenseDTO> expenseDTOList = new ArrayList<>();
-                repository.findAll()
+        repository.findAll()
                 .forEach(expense -> expenseDTOList.add(expense.toDto()));
         return expenseDTOList;
     }
 
-    public ResponseEntity<ExpenseDTO> listById(Long id){
+    public ResponseEntity<ExpenseDTO> listById(Long id) {
         return repository.findById(id)
                 .map(expense -> ResponseEntity.ok().body(expense.toDto())
                 ).orElse(ResponseEntity.notFound().build());
@@ -42,4 +43,13 @@ public class ExpenseService {
         return new ResponseEntity<>(repository.save(expense).toDto(), HttpStatus.CREATED);
     }
 
+    public ResponseEntity<?> delete(Long id) {
+        Optional<Expense> expense = repository.findById(id);
+        if (expense.isPresent()) {
+            repository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
