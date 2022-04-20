@@ -26,6 +26,11 @@ public class ExpenseController {
         return service.listById(id);
     }
 
+    @GetMapping(params = "description")
+    public List<ExpenseDTO> listByDescription(@RequestParam String description){
+        return service.listByDescription(description);
+    }
+
     @PostMapping("/new")
     public ResponseEntity<ExpenseDTO> create(@RequestBody Expense expense) {
         return service.create(expense);

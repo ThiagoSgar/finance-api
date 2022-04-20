@@ -29,6 +29,12 @@ public class IncomeService {
                 .map(income -> ResponseEntity.ok().body(income.toDto())).orElse(ResponseEntity.notFound().build());
     }
 
+    public List<IncomeDTO> listByDescription(String description) {
+        List<IncomeDTO> incomeByDescriptionList = new ArrayList<>();
+        repository.findByDescription(description).forEach(income -> incomeByDescriptionList.add(income.toDto()));
+        return  incomeByDescriptionList;
+    }
+
     public ResponseEntity<IncomeDTO> create(Income income) {
         return new ResponseEntity<>(repository.save(income).toDto(), HttpStatus.CREATED);
     }
@@ -50,6 +56,8 @@ public class IncomeService {
             return ResponseEntity.ok().build();
         }).orElse(ResponseEntity.notFound().build());
     }
+
+
 }
 
 
