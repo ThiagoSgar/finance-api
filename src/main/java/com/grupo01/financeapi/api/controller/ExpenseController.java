@@ -25,8 +25,14 @@ public class ExpenseController {
     public ResponseEntity<ExpenseDTO> listById(@PathVariable Long id){
         return service.listById(id);
     }
+
     @PostMapping("/new")
     public ResponseEntity<ExpenseDTO> create(@RequestBody Expense expense) {
         return service.create(expense);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity <?> delete(@PathVariable Long id){
+        return service.delete(id);
     }
 }
